@@ -1,15 +1,23 @@
 {
-  "name": "playground",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "typescript": "^4.9.3",
-    "vite": "^4.1.0"
-  }
+    "name": "playground",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "glsl-noise": "^0.0.0",
+        "glslify": "^7.1.1",
+        "rollup-plugin-glslify": "^1.3.1",
+        "typescript": "^4.9.3",
+        "vite": "^4.1.0"
+    },
+    "dependencies": {
+        "lil-gui": "^0.18.0",
+        "ogl": "^0.0.112",
+        "ogl-typescript": "^0.1.40"
+    }
 }
