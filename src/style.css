@@ -1,32 +1,34 @@
 html,
 body {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 body {
-    background: black;
-    overflow: hidden;
+	background: black;
+	overflow: hidden;
 }
 
 #app {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
 }
 
 .scene {
-    width: 30%;
+	/* width: 30%;
     position: relative;
-    aspect-ratio: 7 / 9;
+    aspect-ratio: 7 / 9; */
+	width: 100%;
+	height: 100%;
 }
 
 .scene-container {
-    height: 100%;
-    width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 .scene-canvas {
-    display: block;
+	display: block;
 }

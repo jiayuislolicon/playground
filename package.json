@@ -9,6 +9,7 @@
         "preview": "vite preview"
     },
     "devDependencies": {
+        "@types/three": "^0.152.1",
         "glsl-noise": "^0.0.0",
         "glslify": "^7.1.1",
         "rollup-plugin-glslify": "^1.3.1",
@@ -18,6 +19,7 @@
     "dependencies": {
         "lil-gui": "^0.18.0",
         "ogl": "^0.0.112",
-        "ogl-typescript": "^0.1.40"
+        "ogl-typescript": "^0.1.40",
+        "three": "^0.152.2"
     }
 }
