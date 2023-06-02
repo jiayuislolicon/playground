@@ -1,7 +1,6 @@
 import GUI from "lil-gui";
 import {
 	Mesh,
-	PlaneGeometry,
 	ShaderMaterial,
 	Renderer,
 	WebGLRenderer,

@@ -19,7 +19,7 @@ varying float vDisplacement;
 //     return length(max(d,0.0)) + min(max(d.x,d.y),0.0);
 // }
 
-//	Classic Perlin 3D Noise 
+//	Classic Perlin 3D Noise
 //	by Stefan Gustavson
 //
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -121,8 +121,11 @@ float wave(vec3 position) {
 
 void main() {
   vec3 coords = normal;
+  // 根據時間變化來增加數值
   coords.y += uTime;
+  // 加入噪點讓normal點位隨機
   vec3 noisePattern = vec3(noise(coords));
+  // 為了增強對比 + 繪製成環狀的計算(但因為現在點位已經乘上噪點，所以外貌不會像環)
   float pattern = wave(noisePattern);
 
   vPosition = position;
@@ -131,7 +134,8 @@ void main() {
   vDisplacement = pattern;
 
   float displacement = vDisplacement / 3.0;
-  vec3 newPosition = position + normal * displacement; // 經過上面的patter運算，讓normal(表面的點)扭曲
+  // 經過上面的patter運算，讓normal(表面的點)扭曲
+  vec3 newPosition = position + normal * displacement;
   vec4 modelViewPosition = modelViewMatrix * vec4(newPosition, 1.0);
   vec4 projectedPosition = projectionMatrix * modelViewPosition;
 
