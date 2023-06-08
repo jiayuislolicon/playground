@@ -21,8 +21,8 @@ import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 
 import vertex from "./glsl/main.vert";
 import fragment from "./glsl/main.frag";
-import outerVertex from "./glsl/outer.vert";
-import outerFragment from "./glsl/outer.frag";
+import innerVertex from "./glsl/inner.vert";
+import innerFragment from "./glsl/inner.frag";
 
 import { DotScreenShader } from "./CustomShader";
 
@@ -30,8 +30,8 @@ import { DotScreenShader } from "./CustomShader";
 
 class BallScene {
 	renderer!: WebGLRenderer;
-	mesh!: Mesh;
-	mesh2!: Mesh;
+	outerball!: Mesh;
+	smallball!: Mesh;
 	guiObj = { offset: 1 };
 	el!: HTMLElement;
 	scene!: Scene;
@@ -88,8 +88,8 @@ class BallScene {
 			},
 		});
 
-		this.mesh = new Mesh(geometry, material);
-		this.scene.add(this.mesh);
+		this.outerball = new Mesh(geometry, material);
+		this.scene.add(this.outerball);
 
 		this.cubeRenderTarget = new WebGLCubeRenderTarget(256, {
 			format: RGBAFormat,
@@ -103,8 +103,8 @@ class BallScene {
 
 		const geometry2 = new SphereGeometry(0.4, 32, 32);
 		const material2 = new ShaderMaterial({
-			vertexShader: outerVertex,
-			fragmentShader: outerFragment,
+			vertexShader: innerVertex,
+			fragmentShader: innerFragment,
 			side: DoubleSide,
 			uniforms: {
 				uTime: { value: 0 },
@@ -116,8 +116,8 @@ class BallScene {
 			},
 		});
 
-		this.mesh2 = new Mesh(geometry2, material2);
-		this.scene.add(this.mesh2);
+		this.smallball = new Mesh(geometry2, material2);
+		this.scene.add(this.smallball);
 	}
 
 	events() {
@@ -133,13 +133,13 @@ class BallScene {
 	handleRAF = (t: number) => {
 		requestAnimationFrame(this.handleRAF);
 		// @ts-ignore
-		this.mesh.material.uniforms.uTime.value = t / 3000;
+		this.outerball.material.uniforms.uTime.value = t / 3000;
 
-		this.mesh2.visible = false;
+		this.smallball.visible = false;
 		this.cubeCamera.update(this.renderer, this.scene);
 		// @ts-ignore
-		this.mesh2.material.uniforms.tCube.value = this.cubeRenderTarget.texture;
-		this.mesh2.visible = true;
+		this.smallball.material.uniforms.tCube.value = this.cubeRenderTarget.texture;
+		this.smallball.visible = true;
 
 		this.renderer.render(this.scene, this.camera);
 		this.composer.render();
