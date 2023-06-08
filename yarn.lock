@@ -443,6 +443,11 @@ graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
+gsap@^3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.12.1.tgz#e6482f336547cbab947e9f57071565bdce611f79"
+  integrity sha512-FXtb2YbBE9l8I9Pl5DFLpCMedaiMPztRlr0Ln0CMSnJn+pbTaeKlzgth8cLNPc7PzNwIZe+SEQiBBAWaBKJdVA==
+
 has@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
@@ -655,6 +660,11 @@ shallow-copy@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
   integrity sha512-b6i4ZpVuUxB9h5gfCxPiusKYkqTMOjEbBs4wMaFbkfia4yFv92UKZ6Df8WXcKbn08JNL/abvg3FnMAOfakDvUw==
+
+simple-input-events@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/simple-input-events/-/simple-input-events-2.0.0.tgz#1bb24077037e60dc023cb97c16dcd7f27a6a736a"
+  integrity sha512-eNIuS0xk5ZKLC+KESnPwurM7UForG/PdoNKHW+BCF+WFeie8z4m/8h4SGRsObxO8miOqgZhgVw4TKBKfWslvCQ==
 
 source-map-js@^1.0.2:
   version "1.0.2"
