@@ -8,13 +8,11 @@ import {
 	MeshStandardMaterial,
 	DirectionalLight,
 	AmbientLight,
-	Vector2,
 } from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 import vertexPars from "./glsl/vertexPars.vert";
 import vertexMain from "./glsl/vertexMain.vert";
-import fragmentPars from "./glsl/fragmentPars.frag";
-import fragmentMain from "./glsl/fragmentMain.frag";
 
 // tutorial: https://www.youtube.com/watch?v=kJpyUp_pQqU&ab_channel=HowToCodeThat%3F
 
@@ -25,9 +23,10 @@ class BallScene {
 	el!: HTMLElement;
 	scene!: Scene;
 	camera!: PerspectiveCamera;
+	controls!: OrbitControls;
 
 	constructor() {
-		this.setGUI();
+		// this.setGUI();
 		this.setScene();
 		this.events();
 		this.handleResize();
@@ -46,9 +45,10 @@ class BallScene {
 		this.scene = new Scene();
 		this.camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.z = 3;
+		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
 		// 當邊緣產生像素感時，可能是面數不夠了...(效能再哭)
-		const geometry = new IcosahedronGeometry(1, 300);
+		const geometry = new IcosahedronGeometry(1, 100);
 		const material = new MeshStandardMaterial({
 			// @ts-ignore
 			onBeforeCompile: (shader: any) => {
@@ -108,6 +108,7 @@ class BallScene {
 			this.mesh.material.userData.shader.uniforms.uTime.value = t / 10000;
 
 		this.renderer.render(this.scene, this.camera);
+		this.controls.update();
 	};
 }
 

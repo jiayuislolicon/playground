@@ -12,6 +12,7 @@ import {
 	DoubleSide,
 	TorusGeometry,
 } from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 import vertex from "./glsl/main.vert";
 import fragment from "./glsl/main.frag";
@@ -25,6 +26,7 @@ class BallScene {
 	el!: HTMLElement;
 	scene!: Scene;
 	camera!: PerspectiveCamera;
+	controls!: OrbitControls;
 
 	constructor() {
 		this.setGUI();
@@ -34,7 +36,7 @@ class BallScene {
 	}
 
 	setGUI() {
-		const gui = new GUI();
+		// const gui = new GUI();
 		// gui.add(this.guiObj, "offset", 0, 1).onChange(this.guiChange);
 	}
 
@@ -46,6 +48,8 @@ class BallScene {
 		this.scene = new Scene();
 		this.camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.z = 3;
+
+		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
 		const geometry = new TorusGeometry(1, 0.3, 100, 100);
 		const material = new ShaderMaterial({
@@ -86,6 +90,7 @@ class BallScene {
 		this.mesh.material.uniforms.uTime.value = t / 1000;
 
 		this.renderer.render(this.scene, this.camera);
+		this.controls.update();
 	};
 }
 
